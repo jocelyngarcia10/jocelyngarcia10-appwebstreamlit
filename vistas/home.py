@@ -8,6 +8,12 @@ from streamlit_lottie import st_lottie
 def get(path:str):
     with open(path, "r") as p:
         return json.load(p)
+#funcion lottie URL
+def get_url(url:str):
+    r=requests.get(url)
+    if r.status_code !=200:
+        return None
+    return r.json()
 
 #Inicio de pagina
 with st.container():
@@ -89,7 +95,7 @@ with form:
     input_nombre = st.text_input("Nombre:", placeholder="Escriba su nombre")
     input_email = st.text_input("Correo electónico:", placeholder="Escriba su E-mail")
     input_area = st.text_area("Comentario")
-    button_submit = st.form.form_submit_button("Enviar")
+    button_submit = form.form_submit_button("Enviar")
 
     #footer
     with st.container():
@@ -105,6 +111,6 @@ with form:
 
         with p3:
             st.subheader("Redes Sociales")
-            st.markdown("[YOUTUBE](https://www.youtube.com/)")
-            st.markdown("[Facebook](https://www.youtube.com/)")   
-            st.markdown("[Instagram](https://www.youtube.com/)")   
+            st.markdown("[YOUTUBE](https://www.youtube.com)")
+            st.markdown("[Facebook](https://www.youtube.com)")   
+            st.markdown("[Instagram](https://www.youtube.com)")   
